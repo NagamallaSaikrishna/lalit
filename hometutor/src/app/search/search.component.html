@@ -1,0 +1,39 @@
+<div>
+  <form #myForm="ngForm" (ngSubmit)="courseSubmit(myForm)">
+Hello {{selectedRecord.email}} <br><br>
+    <div *ngIf="mentorList.length==0">
+      <label>Select Course</label> <br>
+      <select name="course" [(ngModel)]="selectedRecord.course">
+<option value="B-Course">A-Course</option>
+<option value="B-Course">B-Course</option>
+<option value="B-Course">C-Course</option>
+<option value="B-Course">D-Course</option>
+<option value="B-Course">E-ACourse</option>
+<option value="B-Course">F-Course</option>
+</select>
+      <button type="submit">Find my Tutor</button>
+    </div>
+    <div *ngIf="mentorList.length>0">
+      <br>
+      <label>Enter Query:</label> <br>
+      <input type="text" name="query" [(ngModel)]="query" /> <br>
+
+      <label>Select Mentor</label> <br>
+      <select name="mentor" [(ngModel)]="selectedRecord.mentor">
+<option *ngFor="let m of mentorList" [value]="m.name">{{m.name}}</option>
+</select> <br><br><br>
+      <button (click)="submitMentor(myForm)">Find my Tutor</button>
+    </div>
+  </form>
+
+  <div *ngIf="queryResults.length>0">
+    <h1>Query Results</h1><br>
+    <table style="border:1px">
+      <tr *ngFor="let q of queryResults">
+        <td>{{q.email}}</td>
+        <td>{{q.mentor}}</td>
+        <td>{{q.query}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

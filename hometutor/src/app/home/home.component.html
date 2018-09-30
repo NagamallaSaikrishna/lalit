@@ -1,0 +1,30 @@
+<p>
+  Login and Registeration Form
+</p>
+<div class="loginDiv">
+<form #myForm="ngForm" (ngSubmit)="submitLogin(myForm)" >
+<div>
+  <label for="yourEmail">Your Email:</label>
+  <input type="text" name="youremail" ngModel #prmemail="ngModel" email required />
+  <span *ngIf="prmemail.errors && myForm.submitted && !isValidFormSubmitted">
+   <span  *ngIf="prmemail.errors.email"> Email pattern is not correct.</span>
+    <span  *ngIf="prmemail.errors.required"> Email is mandatory.</span>
+  </span>
+</div>
+<div>
+<label for="password">Password:</label>
+<input type="text" name="yourpassword" ngModel  #yourpwd="ngModel" required/>
+  <span *ngIf="yourpwd.errors && myForm.submitted && !isValidFormSubmitted"> 
+<span *ngIf="yourpwd.errors.required">
+   password is mandatory.
+  </span>
+  </span>
+</div>
+<div>
+<input type="checkbox" name="keeploggenin" /><label for="keplogedin">Keep me loggen in</label>
+</div>
+<button type="submit">Submit</button>
+<div><span>Not a member yet ?</span><button (click)="onJoinNow()" name="joinNow" type="button" >Join Now</button>  </div>
+</form>
+
+</div>

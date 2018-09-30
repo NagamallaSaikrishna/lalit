@@ -1,0 +1,8 @@
+{
+"message":"Query Registered",
+"data": {
+    "email": "abc@abc.com", 
+    "query": "what is angular 2?",
+    "mentor": "Rachit"
+  }
+}

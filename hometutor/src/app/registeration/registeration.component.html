@@ -1,0 +1,32 @@
+<p>
+  Registeration Form
+</p>
+<div class="loginDiv">
+<form #myregForm="ngForm" (ngSubmit)="submitRegisteration(myregForm)" >
+<div>
+  <label for="yourEmail">Your Email:</label>
+  <input type="text" name="youremail"  ngModel #prmemail="ngModel" email required />
+  <span *ngIf="prmemail.errors && myregForm.submitted && !isValidFormSubmitted">
+   
+    <span  *ngIf="prmemail.errors.email"> Email pattern is not correct.</span>
+    <span  *ngIf="prmemail.errors.required"> Email is mandatory.</span>
+  </span>
+</div>
+<div>
+<label for="password">Password:</label>
+<input type="text" name="yourpassword" ngModel #yourpwd="ngModel" required />
+  <span *ngIf="yourpwd.errors && myregForm.submitted && !isValidFormSubmitted">
+    <span  *ngIf="yourpwd.errors.required"> Email is mandatory.</span>
+  </span>
+</div>
+<div>
+<label for="confirmpassword">Confirm Password:</label>
+<input type="text" name="confirmpassword" ngModel #confirmpwd="ngModel" required />
+  <span *ngIf="confirmpwd.errors && myregForm.submitted && !isValidFormSubmitted">
+    <span  *ngIf="confirmpwd.errors.required"> Email is mandatory.</span>
+    
+  </span>
+   <span  *ngIf="confirmpwd!==yourpwd"> confirm password must be same as password.</span>
+</div>
+<button name="btnSubmit" type="submit">Submit</button>
+</form>
